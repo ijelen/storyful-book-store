@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render App 1`] = `
+<div
+  className="ui container"
+  style={
+    Object {
+      "marginTop": "3rem",
+    }
+  }
+>
+  <h1
+    className="ui header"
+  >
+    Option two: Book Store
+  </h1>
+  <p>
+    To try and encourage more sales of different books from a popular 5 book series, a bookshop has decided to offer discounts on multiple book purchases.
+  </p>
+  <p>
+    One copy of any of the five books costs $8. If, however, you buy two different books, you get a 5% discount on those two books. If you buy 3 different books, you get a 10% discount. If you buy 4 different books, you get a 20% discount. If you buy all 5, you get a 25% discount.
+  </p>
+  <p>
+    Note that if you buy four books, of which 3 are different titles, you get a 10% discount on the 3 that form part of a set, but the fourth book still costs $8.
+  </p>
+  <p>
+    Your mission is to write a piece of code to calculate the price of any conceivable shopping basket (containing only books of the same series), giving as big a discount as possible.
+  </p>
+  <p>
+    For example, how much does this basket of books cost?
+  </p>
+  <p>
+    2 copies of the first book 2 copies of the second book 2 copies of the third book 1 copy of the fourth book 1 copy of the fifth book
+  </p>
+  <div
+    className="ui divider"
+    style={
+      Object {
+        "marginBottom": "3rem",
+      }
+    }
+  />
+  <div
+    className="ui grid container"
+  >
+    <div
+      className="twelve wide column"
+    >
+      <div
+        className="ui cards"
+        id="books"
+      >
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "18%",
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Book 1 Title
+            </div>
+            <div
+              className="bookImage"
+            >
+              <img
+                alt="Book 1 Description"
+                src="https://via.placeholder.com/200x260.png/c2d7ec/000000?text=Book 1 Title"
+                style={
+                  Object {
+                    "margin": "1rem auto",
+                    "width": "100%",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="description"
+            >
+              Book 1 Description
+            </div>
+            <div
+              className="price"
+            >
+              $ 
+              8
+            </div>
+          </div>
+          <div
+            className="ui bottom attached button"
+            onClick={[Function]}
+          >
+            <i
+              className="add icon"
+            />
+            Add Book
+          </div>
+        </div>
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "18%",
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Book 2 Title
+            </div>
+            <div
+              className="bookImage"
+            >
+              <img
+                alt="Book 2 Description"
+                src="https://via.placeholder.com/200x260.png/c2d7ec/000000?text=Book 2 Title"
+                style={
+                  Object {
+                    "margin": "1rem auto",
+                    "width": "100%",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="description"
+            >
+              Book 2 Description
+            </div>
+            <div
+              className="price"
+            >
+              $ 
+              8
+            </div>
+          </div>
+          <div
+            className="ui bottom attached button"
+            onClick={[Function]}
+          >
+            <i
+              className="add icon"
+            />
+            Add Book
+          </div>
+        </div>
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "18%",
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Book 3 Title
+            </div>
+            <div
+              className="bookImage"
+            >
+              <img
+                alt="Book 3 Description"
+                src="https://via.placeholder.com/200x260.png/c2d7ec/000000?text=Book 3 Title"
+                style={
+                  Object {
+                    "margin": "1rem auto",
+                    "width": "100%",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="description"
+            >
+              Book 3 Description
+            </div>
+            <div
+              className="price"
+            >
+              $ 
+              8
+            </div>
+          </div>
+          <div
+            className="ui bottom attached button"
+            onClick={[Function]}
+          >
+            <i
+              className="add icon"
+            />
+            Add Book
+          </div>
+        </div>
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "18%",
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Book 4 Title
+            </div>
+            <div
+              className="bookImage"
+            >
+              <img
+                alt="Book 4 Description"
+                src="https://via.placeholder.com/200x260.png/c2d7ec/000000?text=Book 4 Title"
+                style={
+                  Object {
+                    "margin": "1rem auto",
+                    "width": "100%",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="description"
+            >
+              Book 4 Description
+            </div>
+            <div
+              className="price"
+            >
+              $ 
+              8
+            </div>
+          </div>
+          <div
+            className="ui bottom attached button"
+            onClick={[Function]}
+          >
+            <i
+              className="add icon"
+            />
+            Add Book
+          </div>
+        </div>
+        <div
+          className="card"
+          style={
+            Object {
+              "width": "18%",
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Book 5 Title
+            </div>
+            <div
+              className="bookImage"
+            >
+              <img
+                alt="Book 5 Description"
+                src="https://via.placeholder.com/200x260.png/c2d7ec/000000?text=Book 5 Title"
+                style={
+                  Object {
+                    "margin": "1rem auto",
+                    "width": "100%",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="description"
+            >
+              Book 5 Description
+            </div>
+            <div
+              className="price"
+            >
+              $ 
+              8
+            </div>
+          </div>
+          <div
+            className="ui bottom attached button"
+            onClick={[Function]}
+          >
+            <i
+              className="add icon"
+            />
+            Add Book
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="four wide column"
+    >
+      <div
+        className="ui cards"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              Shopping Basket
+            </div>
+            <div
+              className="description"
+            />
+          </div>
+          <div
+            className="ui bottom attached button"
+          >
+            Total: $ 
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

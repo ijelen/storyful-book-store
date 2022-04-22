@@ -9,22 +9,22 @@ const App = () => {
     setBasket([...basket, id]);
   };
 
-  const getTotal = () => {
+  const getTotal = (basket: string[]) => {
     const basketArrangedIntoSets = basket.reduce(
       (previousValue: Array<any>, currentValue: String) => {
         // previousValue is an Array of Sets
         for (let setOfBooks of previousValue) {
-          // see if this book set doesn't contain this book: currentValue
+          // see if this book set doesn't contain this book: currentValue and add it
           if (!setOfBooks.has(currentValue)) {
             setOfBooks.add(currentValue);
             return [...previousValue];
           }
         }
+        // or create a new Set and place it there
         return [...previousValue, new Set([currentValue])];
       },
       []
     );
-
     const total: number = basketArrangedIntoSets.reduce(
       (previousValue: number, currentValue) => {
         // In case there are more than 5 books in the series give them discount as if there are just 5
@@ -49,7 +49,6 @@ const App = () => {
       },
       0
     );
-
     return total;
   };
 
@@ -57,7 +56,7 @@ const App = () => {
     id: string;
     count: number;
   }
-  const getListOfBooks = () => {
+  const getListOfBooks = (basket: string[]) => {
     const countedBooks: countedBook[] = basket.reduce(
       (previousValue: Array<any>, currentValue: string) => {
         for (let countedObject of previousValue) {
@@ -157,7 +156,7 @@ const App = () => {
               <div className="content">
                 <div className="header">Shopping Basket</div>
                 <div className="description">
-                  {getListOfBooks().map((book) => (
+                  {getListOfBooks(basket).map((book) => (
                     <p
                       key={book.id}
                       style={{
@@ -172,7 +171,7 @@ const App = () => {
                 </div>
               </div>
               <div className="ui bottom attached button">
-                Total: $ {getTotal()}
+                Total: $ {getTotal(basket)}
               </div>
             </div>
           </div>

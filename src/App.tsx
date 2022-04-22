@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import books from "./data/books.ts";
-import { Book } from "./data/books";
+import React, { useState } from "react";
+// @ts-ignore
+import { Book, books, discounts } from "./data/index.ts";
 
 const App = () => {
   const [basket, setBasket] = useState([]);
@@ -9,33 +9,48 @@ const App = () => {
     setBasket([...basket, id]);
   };
 
-  useEffect(() => {
-    // console.log(getTotal());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [basket]);
-
   const getTotal = () => {
     const basketArrangedIntoSets = basket.reduce(
       (previousValue: Array<any>, currentValue: String) => {
         // previousValue is an Array of Sets
-        let bookAdded = false;
         for (let setOfBooks of previousValue) {
-          // see if this book set contains this book: currentValue
+          // see if this book set doesn't contain this book: currentValue
           if (!setOfBooks.has(currentValue)) {
             setOfBooks.add(currentValue);
-            bookAdded = true;
-            break;
+            return [...previousValue];
           }
         }
-        if (!bookAdded) {
-          return [...previousValue, new Set([currentValue])];
-        } else {
-          return previousValue;
-        }
+        return [...previousValue, new Set([currentValue])];
       },
       []
     );
-    return basketArrangedIntoSets;
+
+    const total: number = basketArrangedIntoSets.reduce(
+      (previousValue: number, currentValue) => {
+        // In case there are more than 5 books in the series give them discount as if there are just 5
+        const sizeOfBookSet = currentValue.size < 6 ? currentValue.size : 5;
+        const bookSetDiscount = discounts[sizeOfBookSet] || 0;
+        // Convert set to array in order to use reduce
+        const bookSetConvertedIntoArray = Array.from(currentValue);
+        const bookSetTotal = bookSetConvertedIntoArray.reduce(
+          (previousValue: number, currentValue) => {
+            const foundFullBook: Book = books.find(
+              (book: Book) => book.id === currentValue
+            );
+            return previousValue + foundFullBook.price;
+          },
+          0
+        ) as number;
+        // Apply discount to bookSetTotal
+        // bookSetDiscount is a percentage applied
+        const appliedDiscount =
+          bookSetTotal - bookSetDiscount * (bookSetTotal / 100);
+        return previousValue + appliedDiscount;
+      },
+      0
+    );
+
+    return total;
   };
 
   interface countedBook {
@@ -45,21 +60,15 @@ const App = () => {
   const getListOfBooks = () => {
     const countedBooks: countedBook[] = basket.reduce(
       (previousValue: Array<any>, currentValue: string) => {
-        let bookCounted = false;
         for (let countedObject of previousValue) {
           // see if this is the object (countedBook) for the current book (currentValue)
           if (countedObject.id === currentValue) {
             // if it is, increment its count and exit the loop
             countedObject.count = countedObject.count + 1;
-            bookCounted = true;
-            break;
+            return previousValue;
           }
         }
-        if (!bookCounted) {
-          return [...previousValue, { id: currentValue, count: 1 }];
-        } else {
-          return previousValue;
-        }
+        return [...previousValue, { id: currentValue, count: 1 }];
       },
       []
     );
@@ -142,7 +151,7 @@ const App = () => {
             ))}
           </div>
         </div>
-        <div className="four wide column" style={{ backgroundColor: "#ddd" }}>
+        <div className="four wide column">
           <div className="ui cards">
             <div className="card">
               <div className="content">
@@ -162,7 +171,9 @@ const App = () => {
                   ))}
                 </div>
               </div>
-              <div className="ui bottom attached button">Total: ??</div>
+              <div className="ui bottom attached button">
+                Total: $ {getTotal()}
+              </div>
             </div>
           </div>
         </div>

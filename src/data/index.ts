@@ -6,7 +6,7 @@ export interface Book {
   price: number;
 }
 
-const books: Book[] = [
+export const books: Book[] = [
   {
     id: "a",
     title: "Book 1 Title",
@@ -44,4 +44,14 @@ const books: Book[] = [
   },
 ];
 
-export default books;
+export interface Discount {
+  [propName: number]: number;
+}
+
+export const discounts: Discount = {
+  1: 0,
+  2: 5,
+  3: 10,
+  4: 20,
+  5: 25,
+};

@@ -10,7 +10,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(getTotal());
+    // console.log(getTotal());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [basket]);
 
@@ -36,6 +36,49 @@ const App = () => {
       []
     );
     return basketArrangedIntoSets;
+  };
+
+  interface countedBook {
+    id: string;
+    count: number;
+  }
+  const getListOfBooks = () => {
+    const countedBooks: countedBook[] = basket.reduce(
+      (previousValue: Array<any>, currentValue: string) => {
+        let bookCounted = false;
+        for (let countedObject of previousValue) {
+          // see if this is the object (countedBook) for the current book (currentValue)
+          if (countedObject.id === currentValue) {
+            // if it is, increment its count and exit the loop
+            countedObject.count = countedObject.count + 1;
+            bookCounted = true;
+            break;
+          }
+        }
+        if (!bookCounted) {
+          return [...previousValue, { id: currentValue, count: 1 }];
+        } else {
+          return previousValue;
+        }
+      },
+      []
+    );
+    interface countedBookWithTitle {
+      id: string;
+      count: number;
+      title: string;
+    }
+    const countedBooksWithTitles: countedBookWithTitle[] = countedBooks.map(
+      (book: countedBook): countedBookWithTitle => {
+        // Find the title in the books (/data/index.js)
+        const bookRecord: Book = books.find(
+          (fullBook: Book) => fullBook.id === book.id
+        );
+
+        return Object.assign(book, { title: bookRecord.title });
+      }
+    );
+    return countedBooksWithTitles;
   };
 
   return (
@@ -104,7 +147,20 @@ const App = () => {
             <div className="card">
               <div className="content">
                 <div className="header">Shopping Basket</div>
-                <div className="description">{basket.join(" ")}</div>
+                <div className="description">
+                  {getListOfBooks().map((book) => (
+                    <p
+                      key={book.id}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <span>{book.title}</span>
+                      <span> x {book.count}</span>
+                    </p>
+                  ))}
+                </div>
               </div>
               <div className="ui bottom attached button">Total: ??</div>
             </div>

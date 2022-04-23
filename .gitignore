@@ -11,6 +11,9 @@
 # production
 /build
 
+# will match everything that starts with a dot and is a folder
+.*/
+
 # misc
 .DS_Store
 .env.local

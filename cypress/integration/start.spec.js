@@ -25,4 +25,9 @@ describe("A visitor", function () {
     // it should cost $ 51.6: 1 set of 5 books with 25% discount and 1 set of 3 books with 10% discount
     cy.contains("Shopping Basket").parent().parent().contains("51.6");
   });
+
+  it("empties the shopping basket", () => {
+    cy.contains("Empty basket").click();
+    cy.contains("Empty basket").should("not.exist");
+  });
 });

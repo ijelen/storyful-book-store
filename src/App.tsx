@@ -89,6 +89,10 @@ const App = () => {
     return countedBooksWithTitles;
   };
 
+  const emptyBasket = () => {
+    setBasket([]);
+  };
+
   return (
     <div className="ui container" style={{ marginTop: "3rem" }}>
       <h1 className="ui header">Option two: Book Store</h1>
@@ -169,8 +173,20 @@ const App = () => {
                     </p>
                   ))}
                 </div>
+                {basket.length ? (
+                  <button
+                    className="mini ui button"
+                    style={{ float: "right", marginTop: "1rem" }}
+                    onClick={emptyBasket}
+                  >
+                    Empty basket
+                  </button>
+                ) : null}
               </div>
-              <div className="ui bottom attached button">
+              <div
+                className="ui bottom attached button disabled"
+                style={{ textAlign: "right", color: "black" }}
+              >
                 Total: $ {getTotal(basket)}
               </div>
             </div>
